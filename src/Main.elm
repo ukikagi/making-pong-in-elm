@@ -1,4 +1,4 @@
-module Main exposing (Input)
+module Main exposing (main)
 
 import Browser
 import Browser.Events
@@ -12,6 +12,7 @@ import Json.Decode as Decode
 import Set exposing (Set)
 
 
+main : Program () Model Msg
 main =
     Browser.element
         { init = init
@@ -322,6 +323,7 @@ txt transformer =
         >> Collage.rendered
 
 
+pauseMessage : String
 pauseMessage =
     "SPACE to start, WS and ↑↓ to move"
 
