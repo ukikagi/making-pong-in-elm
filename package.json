@@ -4,6 +4,7 @@
   "description": "Pong implementation based on [Making Pong](https://elm-lang.org/blog/making-pong) but using Elm 0.19.",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url ./"
   },
@@ -15,5 +16,8 @@
     "node-elm-compiler": "^5.0.5",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.2.1"
+  },
+  "resolutions": {
+    "node-forge": "0.10.0"
   }
 }
