@@ -2,7 +2,7 @@ name: Deploy GitHub pages
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
   workflow_dispatch:
 
@@ -12,23 +12,18 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
-        
+        uses: actions/checkout@v2
+
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v2
         with:
           node-version: 14
-      
-      - name: Make
-        run: npx elm@latest-0.19.0 make --optimize src/main.elm
 
-      - name: Move files
-        run: |
-          mkdir ./public
-          mv ./index.html ./public/
+      - run: npm ci
+      - run: npm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./dist
